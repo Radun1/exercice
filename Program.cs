@@ -4,28 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntervalOfNumbers
+namespace GameOfNumbers
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int numberOne = int.Parse(Console.ReadLine());
-            int numberTwo = int.Parse(Console.ReadLine());
+            int n = int.Parse(Console.ReadLine());
+            int m = int.Parse(Console.ReadLine());
+            int magicalNumber = int.Parse(Console.ReadLine());
 
-            if (numberOne < numberTwo)
-            
-            for (int i = numberOne; i <= numberTwo; i++)
+            int sum = 0;
+            int counter = 0;
+
+            for (int i = m; i >= n; i--)
             {
-                Console.WriteLine(i);
-            }
-            else if (numberOne > numberTwo)
-
-                for (int i = numberTwo; i <= numberOne; i++)
+                for (int j = m; j >= n; j--)
                 {
-                    Console.WriteLine(i);
+                    sum = i + j;
+                    counter++;
+                    if (sum == magicalNumber)
+                    {
+                        Console.WriteLine($"Number found! {i} + {j} = {magicalNumber}");
+                        return;
+                    }
                 }
+            }
 
+            Console.WriteLine("{0} combinations - neither equals {1} ", counter, magicalNumber);
         }
     }
 }
